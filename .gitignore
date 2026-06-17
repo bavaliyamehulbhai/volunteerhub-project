@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+.env.local
+.env.example
+uploads
+coverage
+
+client/node_modules
+client/.vite
+client/dist 
