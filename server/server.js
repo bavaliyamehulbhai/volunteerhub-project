@@ -28,8 +28,14 @@ app.use(helmet({
 }));
 
 // Configure CORS with credentials support
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://volunteerhub-client.vercel.app",
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: allowedOrigins,
   credentials: true
 }));
 
