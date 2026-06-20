@@ -6,9 +6,10 @@ const seedFirstAdmin = async () => {
   try {
     const adminEmail = "mehulbhaibavaliya8@gmail.com";
     const adminExists = await User.findOne({ email: adminEmail });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash("Mehul@VolunteerhubAdmin123", salt);
+
     if (!adminExists) {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash("Mehul@VolunteerhubAdmin123", salt);
       await User.create({
         name: "System Admin",
         email: adminEmail,
@@ -18,6 +19,12 @@ const seedFirstAdmin = async () => {
         skills: ["Management", "Leadership"]
       });
       console.log("Seeded first admin account successfully.");
+    } else {
+      // Force update role and password to guarantee login works for these details
+      adminExists.role = "admin";
+      adminExists.password = hashedPassword;
+      await adminExists.save();
+      console.log("Enforced admin role and credentials for first admin.");
     }
   } catch (error) {
     console.error("Error seeding first admin:", error.message);
