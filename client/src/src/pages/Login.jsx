@@ -23,6 +23,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(loginSchema),
@@ -207,10 +208,12 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    // Resend by trigger login request again
-                    const values = handleSubmit((data) => data)();
-                    if (values) {
+                    // Resend by triggering login request again using getValues
+                    const values = getValues();
+                    if (values && values.email && values.password) {
                       mutation.mutate(values);
+                    } else {
+                      toast.error("Please fill in your email and password first.");
                     }
                   }}
                   disabled={countdown > 240} // 60 seconds throttle
