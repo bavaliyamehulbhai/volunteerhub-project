@@ -11,6 +11,7 @@ const registerSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  role: z.enum(["volunteer", "admin"]).default("volunteer"),
 });
 
 const Register = () => {
@@ -26,8 +27,8 @@ const Register = () => {
 
   const mutation = useMutation({
     mutationFn: registerUser,
-    onSuccess: () => {
-      toast.success("Registration Successful");
+    onSuccess: (data) => {
+      toast.success(data?.message || "Registration Successful");
       navigate("/login");
     },
     onError: (error) => {
@@ -90,6 +91,22 @@ const Register = () => {
             />
             {errors.password && (
               <p className="text-red-500 text-xs mt-1 font-medium">{errors.password.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+              Join As
+            </label>
+            <select
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              {...register("role")}
+            >
+              <option value="volunteer" className="bg-slate-900">Volunteer</option>
+              <option value="admin" className="bg-slate-900">Administrator (Requires Approval)</option>
+            </select>
+            {errors.role && (
+              <p className="text-red-500 text-xs mt-1 font-medium">{errors.role.message}</p>
             )}
           </div>
 

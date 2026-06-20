@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   console.error(`[Error] ${err.message}`, err.stack);
 
   res.json({
-    message: err.message, // Temporarily sending actual error to client for debugging
+    message: process.env.NODE_ENV === "production" ? "Internal Server Error" : err.message,
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });
 };

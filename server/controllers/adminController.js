@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Event = require("../models/Event");
 const Application = require("../models/Application");
+const AdminRequest = require("../models/AdminRequest");
 
 const getAdminStats = async (req, res) => {
   try {
@@ -330,10 +331,77 @@ const getVolunteers = async (req, res) => {
   }
 };
 
+const getAdminRequests = async (req, res) => {
+  try {
+    const requests = await AdminRequest.find().sort({ createdAt: -1 });
+    res.json(requests);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const approveAdminRequest = async (req, res) => {
+  try {
+    const request = await AdminRequest.findById(req.params.id);
+    if (!request) {
+      return res.status(404).json({ message: "Admin request not found" });
+    }
+    if (request.status !== "pending") {
+      return res.status(400).json({ message: `Request already ${request.status}` });
+    }
+
+    const userExists = await User.findOne({ email: request.email });
+    if (userExists) {
+      request.status = "rejected";
+      await request.save();
+      return res.status(400).json({ message: "User with this email already exists. Request automatically rejected." });
+    }
+
+    // Create user in User collection
+    await User.create({
+      name: request.name,
+      email: request.email,
+      password: request.password, // Password is already hashed
+      role: "admin",
+      city: "Mumbai",
+      skills: ["Management"]
+    });
+
+    request.status = "approved";
+    await request.save();
+
+    res.json({ message: "Admin request approved and account created successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const rejectAdminRequest = async (req, res) => {
+  try {
+    const request = await AdminRequest.findById(req.params.id);
+    if (!request) {
+      return res.status(404).json({ message: "Admin request not found" });
+    }
+    if (request.status !== "pending") {
+      return res.status(400).json({ message: `Request already ${request.status}` });
+    }
+
+    request.status = "rejected";
+    await request.save();
+
+    res.json({ message: "Admin request rejected successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAdminStats,
   getAnalytics,
-  getVolunteers
+  getVolunteers,
+  getAdminRequests,
+  approveAdminRequest,
+  rejectAdminRequest
 };
 
 

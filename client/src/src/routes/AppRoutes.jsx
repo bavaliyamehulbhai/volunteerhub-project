@@ -17,6 +17,7 @@ import AdminApplications from "../pages/admin/AdminApplications";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Profile from "../pages/Profile";
 import SecurityLogs from "../pages/admin/SecurityLogs";
+import AdminRequests from "../pages/admin/AdminRequests";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -29,6 +30,14 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <SecurityLogs />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/requests"
+        element={
+          <ProtectedRoute>
+            <AdminRequests />
           </ProtectedRoute>
         }
       />

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const AdminRequest = require("../models/AdminRequest");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
@@ -32,6 +33,7 @@ const registerUser = async (req, res) => {
       name,
       email,
       password,
+      role
     } = req.body;
 
     if (
@@ -52,6 +54,29 @@ const registerUser = async (req, res) => {
       return res.status(400).json({
         message:
           "User already exists",
+      });
+    }
+
+    if (role === "admin") {
+      const pendingRequest = await AdminRequest.findOne({ email, status: "pending" });
+      if (pendingRequest) {
+        return res.status(400).json({
+          message: "An admin registration request for this email is already pending approval."
+        });
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      await AdminRequest.create({
+        name,
+        email,
+        password: hashedPassword,
+        status: "pending"
+      });
+
+      return res.status(202).json({
+        message: "Admin registration request submitted successfully. It is pending approval by an existing administrator."
       });
     }
 
@@ -97,6 +122,20 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
+      // Check if there's a pending or rejected admin request
+      const adminReq = await AdminRequest.findOne({ email });
+      if (adminReq) {
+        if (adminReq.status === "pending") {
+          return res.status(403).json({
+            message: "Your admin registration request is pending approval by an existing administrator."
+          });
+        } else if (adminReq.status === "rejected") {
+          return res.status(403).json({
+            message: "Your admin registration request was rejected by an administrator."
+          });
+        }
+      }
+
       await logSecurityEvent({
         req,
         email,

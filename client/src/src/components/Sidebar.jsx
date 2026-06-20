@@ -7,7 +7,8 @@ import {
   User,
   LogOut,
   Sparkles,
-  ShieldAlert
+  ShieldAlert,
+  UserPlus
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -103,6 +104,11 @@ const Sidebar = ({ className = "", onClose }) => {
             <Link to="/admin/security-logs" onClick={handleLinkClick} className={linkClass("/admin/security-logs")}>
               <ShieldAlert size={18}/>
               Security Logs
+            </Link>
+
+            <Link to="/admin/requests" onClick={handleLinkClick} className={linkClass("/admin/requests")}>
+              <UserPlus size={18}/>
+              Admin Requests
             </Link>
           </>
         )}
