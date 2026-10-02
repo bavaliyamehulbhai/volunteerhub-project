@@ -9,9 +9,9 @@ Welcome to **VolunteerHub**, an industry-style, premium Volunteer Management Pla
 ```text
 Frontend (React + Tailwind)
             │
-            │ Axios API Calls
+            │ Axios API Calls & Socket.io Events
             ▼
-Backend (Node.js + Express)
+Backend (Node.js + Express + Socket.io)
             │
             ▼
 MongoDB Atlas
@@ -165,16 +165,16 @@ Status = Pending
 
 ---
 
-# 📧 Email Notification Flow
+# 📧 & 🔔 Notification Flow (Email + Real-Time)
 
 ```text
-Application Created
-      ↓
-Send Email
-      ↓
-Volunteer Inbox
-
-Status: Pending
+Application Created / Status Updated
+       ↓
+Backend Triggers Event
+   ↙      ↘
+Send Email   Emit Socket.io Event
+   ↓          ↓
+ Inbox     UI Bell Icon Updates Instantly
 ```
 
 ---
@@ -448,3 +448,16 @@ Generate Reports & Export CSV / PDF
 * **Module 15**: Cloudinary Upload ✅
 * **Module 16**: Advanced Analytics ✅
 * **Module 17**: Deployment Ready ✅
+* **Module 18**: Real-Time Notifications (Socket.io) ✅
+* **Module 19**: Premium Dark Mode UI & Glassmorphism ✅
+
+---
+
+# 🛠 Useful Commands
+
+### Seed the Database
+To populate the database with premium dummy data (Events & Admin account), run:
+```bash
+cd server
+npm run seed
+```
