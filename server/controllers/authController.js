@@ -473,6 +473,31 @@ const logoutUser = async (req, res) => {
   res.json({ message: "Logged out successfully" });
 };
 
+const deleteSecurityLog = async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied" });
+    }
+    const log = await SecurityLog.findByIdAndDelete(req.params.id);
+    if (!log) return res.status(404).json({ message: "Log not found" });
+    res.json({ message: "Log deleted successfully" });
+  } catch (error) {
+    throw error;
+  }
+};
+
+const clearSecurityLogs = async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied" });
+    }
+    await SecurityLog.deleteMany({});
+    res.json({ message: "All logs cleared successfully" });
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
@@ -481,5 +506,7 @@ module.exports = {
   verifyMfa,
   verifySecurityQuestion,
   getSecurityLogs,
-  logoutUser
+  logoutUser,
+  deleteSecurityLog,
+  clearSecurityLogs
 };

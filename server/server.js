@@ -10,6 +10,7 @@ const applicationRoutes = require("./routes/applicationRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -17,8 +18,11 @@ const cookieParser = require("cookie-parser");
 const mongoSanitizer = require("./middleware/mongoSanitizer");
 const xssSanitizer = require("./middleware/xssSanitizer");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
+const http = require("http");
+const { initSocket } = require("./socket");
 
 const app = express();
+const server = http.createServer(app);
 
 connectDB();
 
@@ -41,6 +45,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Initialize Socket.io
+initSocket(server, allowedOrigins);
 
 // Anti-NoSQL Query Injection and XSS mitigation
 app.use(mongoSanitizer);
@@ -68,6 +75,7 @@ app.use("/api/applications", applicationRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.get("/", (req, res) => {
   res.send("VolunteerHub API Running");
@@ -78,8 +86,8 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server Running On Port ${PORT}`);
 });
 
-// Force nodemon restart: 1
+// Force nodemon restart: 3

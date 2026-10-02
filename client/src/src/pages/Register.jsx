@@ -41,23 +41,23 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4">
-      <div className="w-full max-w-md bg-slate-900/50 border border-slate-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl">
-        <h2 className="text-3xl font-extrabold text-white text-center tracking-tight mb-2">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center items-center p-4 transition-colors duration-300">
+      <div className="w-full max-w-md bg-white/80 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl dark:shadow-indigo-900/20 transition-colors duration-300">
+        <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white text-center tracking-tight mb-2 transition-colors duration-300">
           Create Account
         </h2>
-        <p className="text-slate-400 text-center text-sm mb-8">
+        <p className="text-slate-500 dark:text-slate-400 text-center text-sm mb-8 transition-colors duration-300">
           Join VolunteerHub and start making an impact
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+          <div className="space-y-1 text-left">
+            <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
               Full Name
             </label>
             <input
               placeholder="John Doe"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               {...register("name")}
             />
             {errors.name && (
@@ -65,13 +65,13 @@ const Register = () => {
             )}
           </div>
 
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+          <div className="space-y-1 text-left">
+            <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
               Email Address
             </label>
             <input
               placeholder="name@example.com"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               {...register("email")}
             />
             {errors.email && (
@@ -79,14 +79,14 @@ const Register = () => {
             )}
           </div>
 
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+          <div className="space-y-1 text-left">
+            <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
               Password
             </label>
             <input
               type="password"
               placeholder="••••••••"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               {...register("password")}
             />
             {errors.password && (
@@ -94,16 +94,16 @@ const Register = () => {
             )}
           </div>
 
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+          <div className="space-y-1 text-left">
+            <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
               Join As
             </label>
             <select
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               {...register("role")}
             >
-              <option value="volunteer" className="bg-slate-900">Volunteer</option>
-              <option value="admin" className="bg-slate-900">Administrator (Requires Approval)</option>
+              <option value="volunteer" className="bg-white dark:bg-slate-900">Volunteer</option>
+              <option value="admin" className="bg-white dark:bg-slate-900">Administrator (Requires Approval)</option>
             </select>
             {errors.role && (
               <p className="text-red-500 text-xs mt-1 font-medium">{errors.role.message}</p>
@@ -119,11 +119,11 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="text-slate-400 text-sm text-center mt-8">
+        <p className="text-slate-500 dark:text-slate-400 text-sm text-center mt-8 transition-colors duration-300">
           Already have an account?{" "}
           <span
             onClick={() => navigate("/login")}
-            className="text-blue-400 hover:text-blue-300 font-semibold cursor-pointer transition-colors duration-200"
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold cursor-pointer transition-colors duration-200"
           >
             Log in
           </span>

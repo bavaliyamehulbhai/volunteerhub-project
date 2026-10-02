@@ -43,14 +43,19 @@ const CreateEvent = () => {
         </div>
 
         {/* Header Block */}
-        <div className="border-b border-slate-200/60 pb-6">
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full flex items-center gap-1">
-              <Sparkles className="w-3 h-3" /> Event Campaign
-            </span>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-blue-50 border border-indigo-100 shadow-sm relative overflow-hidden mb-8">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -mr-16 -mt-16"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -ml-16 -mb-16"></div>
+          
+          <div className="text-left relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="px-3 py-1.5 text-xs font-bold text-indigo-700 bg-white/80 backdrop-blur-sm border border-indigo-100 rounded-full flex items-center gap-1.5 shadow-sm">
+                <Sparkles className="w-3.5 h-3.5" /> Event Campaign
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-800 tracking-tight">Create New Event</h1>
+            <p className="text-slate-600 mt-2 text-sm md:text-base font-medium max-w-xl">Deploy a new volunteering project or campaign to recruit helpers and track engagement.</p>
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mt-2">Create New Event</h1>
-          <p className="text-slate-500 mt-1">Deploy a new volunteering project or campaign to recruit helpers and track engagement.</p>
         </div>
 
         {/* Unified Event Form */}

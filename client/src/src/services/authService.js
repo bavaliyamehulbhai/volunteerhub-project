@@ -35,6 +35,16 @@ export const getSecurityLogs = async () => {
   return response.data;
 };
 
+export const deleteSecurityLog = async (id) => {
+  const response = await api.delete(`/auth/security-logs/${id}`);
+  return response.data;
+};
+
+export const clearSecurityLogs = async () => {
+  const response = await api.delete("/auth/security-logs");
+  return response.data;
+};
+
 export const logoutUser = async () => {
   const response = await api.post("/auth/logout");
   return response.data;

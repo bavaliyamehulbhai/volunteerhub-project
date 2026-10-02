@@ -47,9 +47,9 @@ const AdminDashboard = () => {
   if (isLoading) {
     return (
       <DashboardLayout>
-        <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4">
+        <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4 transition-colors duration-300">
           <Loader />
-          <p className="text-slate-500 font-medium animate-pulse">Loading dashboard intelligence...</p>
+          <p className="text-slate-500 dark:text-slate-400 font-medium animate-pulse transition-colors">Loading dashboard intelligence...</p>
         </div>
       </DashboardLayout>
     );
@@ -58,12 +58,12 @@ const AdminDashboard = () => {
   if (error) {
     return (
       <DashboardLayout>
-        <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4 text-center">
-          <div className="p-4 bg-rose-50 rounded-full text-rose-500">
+        <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4 text-center transition-colors duration-300">
+          <div className="p-4 bg-rose-50 dark:bg-rose-900/30 rounded-full text-rose-500 dark:text-rose-400 transition-colors">
             <TrendingDown className="w-12 h-12" />
           </div>
-          <h2 className="text-xl font-bold text-slate-800">Failed to load analytics</h2>
-          <p className="text-slate-500 max-w-md">{error.message || "An error occurred while fetching platform performance data."}</p>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors">Failed to load analytics</h2>
+          <p className="text-slate-500 dark:text-slate-400 max-w-md transition-colors">{error.message || "An error occurred while fetching platform performance data."}</p>
         </div>
       </DashboardLayout>
     );
@@ -131,23 +131,23 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto space-y-8 pb-12">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-slate-200/60 pb-6 text-left">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-slate-200/60 dark:border-slate-800/80 pb-6 text-left transition-colors duration-300">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full flex items-center gap-1">
+              <span className="px-2.5 py-1 text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800/50 rounded-full flex items-center gap-1 transition-colors">
                 <Sparkles className="w-3 h-3" /> Live Intelligence
               </span>
             </div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mt-2">Executive Analytics</h1>
-            <p className="text-slate-500 mt-1">SaaS metrics, volunteer growth trends, and dynamic event activity feed.</p>
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mt-2 transition-colors">Executive Analytics</h1>
+            <p className="text-slate-500 dark:text-slate-400 mt-1 transition-colors">SaaS metrics, volunteer growth trends, and dynamic event activity feed.</p>
           </div>
           
           <div className="flex items-center gap-3">
             <Link 
               to="/admin/reports" 
-              className="px-5 py-2.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 shadow-sm flex items-center gap-2"
+              className="px-5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-200 shadow-sm flex items-center gap-2"
             >
-              <BarChart3 className="w-4 h-4 text-slate-500" />
+              <BarChart3 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
               Report Center
             </Link>
             <Link 
@@ -163,81 +163,81 @@ const AdminDashboard = () => {
         {/* Overview Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {/* Card 1: Total Events */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50/40 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50/40 dark:bg-blue-900/10 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
             <div>
-              <div className="p-3 bg-blue-50 rounded-xl w-fit text-blue-600 mb-4">
+              <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl w-fit text-blue-600 dark:text-blue-400 mb-4 transition-colors">
                 <Calendar className="w-5 h-5" />
               </div>
-              <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Total Events</p>
-              <h3 className="text-3xl font-extrabold text-slate-800 mt-1">{totalEvents}</h3>
+              <p className="text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">Total Events</p>
+              <h3 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-1 transition-colors">{totalEvents}</h3>
             </div>
-            <p className="text-slate-400 text-xs mt-3 flex items-center gap-1">
+            <p className="text-slate-400 dark:text-slate-500 text-xs mt-3 flex items-center gap-1 transition-colors">
               Active programs on platform
             </p>
           </div>
 
           {/* Card 2: Volunteers */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50/40 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50/40 dark:bg-emerald-900/10 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
             <div>
-              <div className="p-3 bg-emerald-50 rounded-xl w-fit text-emerald-600 mb-4">
+              <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl w-fit text-emerald-600 dark:text-emerald-400 mb-4 transition-colors">
                 <Users className="w-5 h-5" />
               </div>
-              <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Total Volunteers</p>
-              <h3 className="text-3xl font-extrabold text-slate-800 mt-1">{totalVolunteers}</h3>
+              <p className="text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">Total Volunteers</p>
+              <h3 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-1 transition-colors">{totalVolunteers}</h3>
             </div>
-            <p className="text-slate-400 text-xs mt-3 flex items-center gap-1">
+            <p className="text-slate-400 dark:text-slate-500 text-xs mt-3 flex items-center gap-1 transition-colors">
               Registered users in system
             </p>
           </div>
 
           {/* Card 3: Applications */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-50/40 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-50/40 dark:bg-amber-900/10 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
             <div>
-              <div className="p-3 bg-amber-50 rounded-xl w-fit text-amber-600 mb-4">
+              <div className="p-3 bg-amber-50 dark:bg-amber-900/30 rounded-xl w-fit text-amber-600 dark:text-amber-400 mb-4 transition-colors">
                 <FileText className="w-5 h-5" />
               </div>
-              <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Applications</p>
-              <h3 className="text-3xl font-extrabold text-slate-800 mt-1">{totalApplications}</h3>
+              <p className="text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">Applications</p>
+              <h3 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-1 transition-colors">{totalApplications}</h3>
             </div>
-            <p className="text-slate-400 text-xs mt-3 flex items-center gap-1">
+            <p className="text-slate-400 dark:text-slate-500 text-xs mt-3 flex items-center gap-1 transition-colors">
               Total applied positions
             </p>
           </div>
 
           {/* Card 4: Applications Growth */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
-            <div className={`absolute top-0 right-0 w-24 h-24 ${isPositiveGrowth ? "bg-emerald-50/40" : "bg-rose-50/40"} rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300`}></div>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
+            <div className={`absolute top-0 right-0 w-24 h-24 ${isPositiveGrowth ? "bg-emerald-50/40 dark:bg-emerald-900/10" : "bg-rose-50/40 dark:bg-rose-900/10"} rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300`}></div>
             <div>
-              <div className={`p-3 rounded-xl w-fit mb-4 ${isPositiveGrowth ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-600"}`}>
+              <div className={`p-3 rounded-xl w-fit mb-4 ${isPositiveGrowth ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400" : "bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400"} transition-colors`}>
                 {isPositiveGrowth ? <TrendingUp className="w-5 h-5" /> : <TrendingDown className="w-5 h-5" />}
               </div>
-              <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">MoM Growth</p>
-              <h3 className={`text-3xl font-extrabold mt-1 ${isPositiveGrowth ? "text-emerald-600" : "text-rose-600"}`}>
+              <p className="text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">MoM Growth</p>
+              <h3 className={`text-3xl font-extrabold mt-1 ${isPositiveGrowth ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"} transition-colors`}>
                 {growthSign}{monthlyGrowth}%
               </h3>
             </div>
-            <p className="text-slate-400 text-xs mt-3">
+            <p className="text-slate-400 dark:text-slate-500 text-xs mt-3 transition-colors">
               vs previous month count
             </p>
           </div>
 
           {/* Card 5: Approval Rate */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50/40 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50/40 dark:bg-indigo-900/10 rounded-bl-full -mr-4 -mt-4 group-hover:scale-110 transition-transform duration-300"></div>
             <div>
-              <div className="p-3 bg-indigo-50 rounded-xl w-fit text-indigo-600 mb-4">
+              <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl w-fit text-indigo-600 dark:text-indigo-400 mb-4 transition-colors">
                 <Percent className="w-5 h-5" />
               </div>
-              <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Approval Rate</p>
-              <h3 className="text-3xl font-extrabold text-slate-800 mt-1">{approvalRate}%</h3>
+              <p className="text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">Approval Rate</p>
+              <h3 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-1 transition-colors">{approvalRate}%</h3>
             </div>
             <div className="mt-4">
-              <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+              <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden transition-colors">
                 <div 
-                  className="h-full bg-indigo-600 rounded-full transition-all duration-500" 
+                  className="h-full bg-indigo-600 dark:bg-indigo-500 rounded-full transition-all duration-500" 
                   style={{ width: `${approvalRate}%` }}
                 ></div>
               </div>
@@ -249,14 +249,14 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Trends Area Chart */}
-          <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col transition-colors duration-300">
             <div className="mb-6">
-              <h2 className="text-lg font-bold text-slate-800">Monthly Applications Trend</h2>
-              <p className="text-slate-400 text-xs">A historical overview of application flow over time.</p>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Monthly Applications Trend</h2>
+              <p className="text-slate-400 dark:text-slate-500 text-xs transition-colors">A historical overview of application flow over time.</p>
             </div>
             <div className="h-[300px] w-full flex-1">
               {monthlyApplications.length === 0 ? (
-                <div className="h-full flex items-center justify-center text-slate-400 italic text-sm">
+                <div className="h-full flex items-center justify-center text-slate-400 dark:text-slate-600 italic text-sm transition-colors">
                   No application trend data available yet
                 </div>
               ) : (
@@ -308,22 +308,22 @@ const AdminDashboard = () => {
           </div>
 
           {/* Status Distribution Pie Chart */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
-              <h2 className="text-lg font-bold text-slate-800">Application Statuses</h2>
-              <p className="text-slate-400 text-xs mb-4">Breakdown of current application decisions.</p>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Application Statuses</h2>
+              <p className="text-slate-400 dark:text-slate-500 text-xs mb-4 transition-colors">Breakdown of current application decisions.</p>
             </div>
             
             <div className="h-[220px] w-full flex items-center justify-center relative">
               {applicationStatus.length === 0 ? (
-                <div className="text-slate-400 italic text-sm">
+                <div className="text-slate-400 dark:text-slate-600 italic text-sm transition-colors">
                   No status data available
                 </div>
               ) : (
                 <>
                   <div className="absolute flex flex-col items-center justify-center">
-                    <span className="text-3xl font-extrabold text-slate-800">{totalApplications}</span>
-                    <span className="text-slate-400 text-[10px] font-semibold uppercase tracking-wider">Total</span>
+                    <span className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 transition-colors">{totalApplications}</span>
+                    <span className="text-slate-400 dark:text-slate-500 text-[10px] font-semibold uppercase tracking-wider transition-colors">Total</span>
                   </div>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -360,12 +360,12 @@ const AdminDashboard = () => {
               {applicationStatus.map((entry, index) => {
                 const color = statusColors[entry.name] || pieColors[index % pieColors.length];
                 return (
-                  <div key={entry.name} className="flex flex-col items-center justify-center p-2 rounded-xl bg-slate-55/40 border border-slate-100/50">
+                  <div key={entry.name} className="flex flex-col items-center justify-center p-2 rounded-xl bg-slate-55/40 dark:bg-slate-800/50 border border-slate-100/50 dark:border-slate-700/50 transition-colors">
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
-                      <span className="text-[11px] font-bold text-slate-600">{entry.name}</span>
+                      <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 transition-colors">{entry.name}</span>
                     </div>
-                    <span className="text-sm font-extrabold text-slate-800 mt-0.5">{entry.value}</span>
+                    <span className="text-sm font-extrabold text-slate-800 dark:text-slate-200 mt-0.5 transition-colors">{entry.value}</span>
                   </div>
                 );
               })}
@@ -378,19 +378,19 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Top Categories */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <div className="p-1.5 bg-violet-50 rounded-lg text-violet-600">
+                <div className="p-1.5 bg-violet-50 dark:bg-violet-900/30 rounded-lg text-violet-600 dark:text-violet-400 transition-colors">
                   <Layers className="w-4 h-4" />
                 </div>
-                <h2 className="text-lg font-bold text-slate-800">Top Categories</h2>
+                <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Top Categories</h2>
               </div>
-              <p className="text-slate-400 text-xs mb-6">Distribution and engagement across key domains.</p>
+              <p className="text-slate-400 dark:text-slate-500 text-xs mb-6 transition-colors">Distribution and engagement across key domains.</p>
               
               <div className="space-y-5">
                 {categoryStats.length === 0 ? (
-                  <div className="py-10 text-center text-slate-400 italic text-sm">
+                  <div className="py-10 text-center text-slate-400 dark:text-slate-600 italic text-sm transition-colors">
                     No category data available
                   </div>
                 ) : (
@@ -402,14 +402,14 @@ const AdminDashboard = () => {
                     return (
                       <div key={cat.category} className="space-y-1.5">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="font-semibold text-slate-700">{cat.category}</span>
-                          <div className="text-xs text-slate-400">
-                            <span className="font-bold text-slate-700">{cat.applicationsCount}</span> apps
+                          <span className="font-semibold text-slate-700 dark:text-slate-300 transition-colors">{cat.category}</span>
+                          <div className="text-xs text-slate-400 dark:text-slate-500 transition-colors">
+                            <span className="font-bold text-slate-700 dark:text-slate-300 transition-colors">{cat.applicationsCount}</span> apps
                             <span className="mx-1.5">•</span>
-                            <span className="font-bold text-slate-700">{cat.eventCount}</span> events
+                            <span className="font-bold text-slate-700 dark:text-slate-300 transition-colors">{cat.eventCount}</span> events
                           </div>
                         </div>
-                        <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                        <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden transition-colors">
                           <div 
                             className={`h-full rounded-full bg-gradient-to-r ${gradient} transition-all duration-500`}
                             style={{ width: `${pct}%` }}
@@ -424,19 +424,19 @@ const AdminDashboard = () => {
           </div>
 
           {/* Top Performing Events (Event Performance) */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <div className="p-1.5 bg-rose-50 rounded-lg text-rose-600">
+                <div className="p-1.5 bg-rose-50 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-400 transition-colors">
                   <Award className="w-4 h-4" />
                 </div>
-                <h2 className="text-lg font-bold text-slate-800">Event Performance</h2>
+                <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Event Performance</h2>
               </div>
-              <p className="text-slate-400 text-xs mb-5">Events generating the highest volunteer signups.</p>
+              <p className="text-slate-400 dark:text-slate-500 text-xs mb-5 transition-colors">Events generating the highest volunteer signups.</p>
               
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-slate-100 dark:divide-slate-800/80 transition-colors">
                 {topEvents.length === 0 ? (
-                  <div className="py-10 text-center text-slate-400 italic text-sm">
+                  <div className="py-10 text-center text-slate-400 dark:text-slate-600 italic text-sm transition-colors">
                     No event performance data
                   </div>
                 ) : (
@@ -449,7 +449,7 @@ const AdminDashboard = () => {
                             <img 
                               src={e.image} 
                               alt={e.title} 
-                              className="w-10 h-10 rounded-xl object-cover border border-slate-100" 
+                              className="w-10 h-10 rounded-xl object-cover border border-slate-100 dark:border-slate-800 transition-colors" 
                             />
                           ) : (
                             <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${categoryGradients[e?.category] || "from-indigo-500 to-purple-600"} flex items-center justify-center text-white font-extrabold text-xs shadow-sm`}>
@@ -457,16 +457,16 @@ const AdminDashboard = () => {
                             </div>
                           )}
                           <div className="truncate">
-                            <h4 className="font-semibold text-slate-800 text-sm truncate group-hover:text-indigo-600 transition-colors">
+                            <h4 className="font-semibold text-slate-800 dark:text-slate-200 text-sm truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                               {e?.title || "Deleted Event"}
                             </h4>
-                            <span className="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">
+                            <span className="text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1.5 mt-0.5 transition-colors">
                               {e?.category} • {formatDate(e?.eventDate)}
                             </span>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200/50">
+                          <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50 transition-colors">
                             {item.applicationCount} apps
                           </span>
                         </div>
@@ -479,19 +479,19 @@ const AdminDashboard = () => {
           </div>
 
           {/* Top Active Volunteers */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <div className="p-1.5 bg-emerald-50 rounded-lg text-emerald-600">
+                <div className="p-1.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-400 transition-colors">
                   <UserCheck className="w-4 h-4" />
                 </div>
-                <h2 className="text-lg font-bold text-slate-800">Most Active Volunteers</h2>
+                <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Most Active Volunteers</h2>
               </div>
-              <p className="text-slate-400 text-xs mb-5">Volunteers with the highest application submissions.</p>
+              <p className="text-slate-400 dark:text-slate-500 text-xs mb-5 transition-colors">Volunteers with the highest application submissions.</p>
               
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-slate-100 dark:divide-slate-800/80 transition-colors">
                 {activeVolunteers.length === 0 ? (
-                  <div className="py-10 text-center text-slate-400 italic text-sm">
+                  <div className="py-10 text-center text-slate-400 dark:text-slate-600 italic text-sm transition-colors">
                     No active volunteers on record
                   </div>
                 ) : (
@@ -508,7 +508,7 @@ const AdminDashboard = () => {
                             <img 
                               src={u.profileImage} 
                               alt={u.name} 
-                              className="w-10 h-10 rounded-full object-cover border border-slate-100" 
+                              className="w-10 h-10 rounded-full object-cover border border-slate-100 dark:border-slate-800 transition-colors" 
                             />
                           ) : (
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-extrabold text-xs shadow-sm">
@@ -516,21 +516,21 @@ const AdminDashboard = () => {
                             </div>
                           )}
                           <div className="truncate">
-                            <h4 className="font-semibold text-slate-800 text-sm truncate">
+                            <h4 className="font-semibold text-slate-800 dark:text-slate-200 text-sm truncate transition-colors">
                               {u?.name || "Deleted Volunteer"}
                             </h4>
-                            <span className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+                            <span className="text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1 mt-0.5 transition-colors">
                               {u?.city && <><MapPin className="w-3 h-3" /> {u.city} • </>} {item.applicationCount} Applications
                             </span>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                          <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold border transition-colors ${
                             approvalPct >= 70 
-                              ? "bg-emerald-50 text-emerald-700 border-emerald-100" 
+                              ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-800/50" 
                               : approvalPct >= 40 
-                              ? "bg-amber-50 text-amber-700 border-amber-100" 
-                              : "bg-slate-50 text-slate-600 border-slate-100"
+                              ? "bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-100 dark:border-amber-800/50" 
+                              : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-100 dark:border-slate-700/50"
                           }`}>
                             {approvalPct}% Appr
                           </span>
@@ -549,18 +549,18 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Recent Activity Feed */}
-          <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="p-1.5 bg-blue-50 rounded-lg text-blue-600">
+                  <div className="p-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400 transition-colors">
                     <Activity className="w-4 h-4" />
                   </div>
-                  <h2 className="text-lg font-bold text-slate-800">Recent Activity</h2>
+                  <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">Recent Activity</h2>
                 </div>
                 <Link 
                   to="/admin/applications" 
-                  className="text-indigo-600 hover:text-indigo-700 text-xs font-bold flex items-center gap-1 transition-all"
+                  className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-xs font-bold flex items-center gap-1 transition-all"
                 >
                   Manage applications
                   <ChevronRight className="w-4 h-4" />
@@ -570,30 +570,30 @@ const AdminDashboard = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-100 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <tr className="border-b border-slate-100 dark:border-slate-800/80 text-slate-400 dark:text-slate-500 text-xs font-semibold uppercase tracking-wider transition-colors">
                       <th className="pb-3 font-semibold">Volunteer</th>
                       <th className="pb-3 font-semibold">Event</th>
                       <th className="pb-3 font-semibold">Applied At</th>
                       <th className="pb-3 font-semibold text-right">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 text-sm">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-sm transition-colors">
                     {recentApplications.length === 0 ? (
                       <tr>
-                        <td colSpan="4" className="py-8 text-center text-slate-400 italic">
+                        <td colSpan="4" className="py-8 text-center text-slate-400 dark:text-slate-600 italic transition-colors">
                           No recent applications received
                         </td>
                       </tr>
                     ) : (
                       recentApplications.map((app) => (
-                        <tr key={app._id} className="hover:bg-slate-50/50 transition-colors">
+                        <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors">
                           <td className="py-3">
                             <div className="flex items-center gap-2.5">
                               {app.volunteer?.profileImage ? (
                                 <img 
                                   src={app.volunteer.profileImage} 
                                   alt={app.volunteer.name} 
-                                  className="w-7 h-7 rounded-full object-cover border border-slate-100" 
+                                  className="w-7 h-7 rounded-full object-cover border border-slate-100 dark:border-slate-800 transition-colors" 
                                 />
                               ) : (
                                 <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-extrabold text-[10px] shadow-sm">
@@ -601,19 +601,19 @@ const AdminDashboard = () => {
                                 </div>
                               )}
                               <div>
-                                <span className="font-semibold text-slate-700 block max-w-[140px] truncate">
+                                <span className="font-semibold text-slate-700 dark:text-slate-200 block max-w-[140px] truncate transition-colors">
                                   {app.volunteer?.name || "Anonymous"}
                                 </span>
-                                <span className="text-[10px] text-slate-400 block max-w-[140px] truncate">
+                                <span className="text-[10px] text-slate-400 dark:text-slate-500 block max-w-[140px] truncate transition-colors">
                                   {app.volunteer?.email}
                                 </span>
                               </div>
                             </div>
                           </td>
-                          <td className="py-3 font-medium text-slate-600 max-w-[180px] truncate">
+                          <td className="py-3 font-medium text-slate-600 dark:text-slate-400 max-w-[180px] truncate transition-colors">
                             {app.event?.title || "Deleted Event"}
                           </td>
-                          <td className="py-3 text-slate-400 text-xs">
+                          <td className="py-3 text-slate-400 dark:text-slate-500 text-xs transition-colors">
                             {formatTimeAgo(app.appliedAt)}
                           </td>
                           <td className="py-3 text-right">
@@ -629,53 +629,53 @@ const AdminDashboard = () => {
           </div>
 
           {/* Quick Actions Panel */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-left flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-none text-left flex flex-col justify-between transition-colors duration-300">
             <div>
-              <h2 className="text-lg font-bold text-slate-800 mb-1">Quick Actions</h2>
-              <p className="text-slate-400 text-xs mb-6">Shortcuts to manage your volunteer organization.</p>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-1 transition-colors">Quick Actions</h2>
+              <p className="text-slate-400 dark:text-slate-500 text-xs mb-6 transition-colors">Shortcuts to manage your volunteer organization.</p>
               
               <div className="grid grid-cols-2 gap-4">
                 <Link 
                   to="/admin/events/create" 
-                  className="p-5 rounded-2xl border border-slate-100 hover:border-indigo-500/20 hover:bg-indigo-50/5 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] hover:shadow-md"
+                  className="p-5 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-indigo-500/20 dark:hover:border-indigo-400/30 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/10 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] dark:shadow-none hover:shadow-md"
                 >
-                  <PlusCircle className="w-7 h-7 text-indigo-500 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-xs font-bold text-slate-700 mt-1">Create Event</span>
+                  <PlusCircle className="w-7 h-7 text-indigo-500 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 transition-colors">Create Event</span>
                 </Link>
                 
                 <Link 
                   to="/admin/applications" 
-                  className="p-5 rounded-2xl border border-slate-100 hover:border-amber-500/20 hover:bg-amber-50/5 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] hover:shadow-md"
+                  className="p-5 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-amber-500/20 dark:hover:border-amber-400/30 hover:bg-amber-50/50 dark:hover:bg-amber-900/10 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] dark:shadow-none hover:shadow-md"
                 >
-                  <ClipboardList className="w-7 h-7 text-amber-500 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-xs font-bold text-slate-700 mt-1">Manage Apps</span>
+                  <ClipboardList className="w-7 h-7 text-amber-500 dark:text-amber-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 transition-colors">Manage Apps</span>
                 </Link>
                 
                 <Link 
                   to="/volunteers" 
-                  className="p-5 rounded-2xl border border-slate-100 hover:border-emerald-500/20 hover:bg-emerald-50/5 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] hover:shadow-md"
+                  className="p-5 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-emerald-500/20 dark:hover:border-emerald-400/30 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] dark:shadow-none hover:shadow-md"
                 >
-                  <UserCheck className="w-7 h-7 text-emerald-500 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-xs font-bold text-slate-700 mt-1">Volunteers</span>
+                  <UserCheck className="w-7 h-7 text-emerald-500 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 transition-colors">Volunteers</span>
                 </Link>
                 
                 <Link 
                   to="/admin/reports" 
-                  className="p-5 rounded-2xl border border-slate-100 hover:border-rose-500/20 hover:bg-rose-50/5 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] hover:shadow-md"
+                  className="p-5 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-rose-500/20 dark:hover:border-rose-400/30 hover:bg-rose-50/50 dark:hover:bg-rose-900/10 flex flex-col items-center justify-center gap-2 group transition-all duration-300 text-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] dark:shadow-none hover:shadow-md"
                 >
-                  <BarChart3 className="w-7 h-7 text-rose-500 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-xs font-bold text-slate-700 mt-1">Run Reports</span>
+                  <BarChart3 className="w-7 h-7 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 transition-colors">Run Reports</span>
                 </Link>
               </div>
             </div>
 
-            <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div className="mt-8 pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400 dark:text-slate-500 transition-colors">
               <span>VolunteerHub v2.4.0</span>
               <a 
                 href="/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="flex items-center gap-0.5 hover:text-slate-600 transition-colors"
+                className="flex items-center gap-0.5 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
               >
                 Go to Website
                 <ArrowRight className="w-3 h-3" />

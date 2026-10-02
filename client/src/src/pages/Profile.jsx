@@ -234,9 +234,19 @@ const Profile = () => {
       <div className="max-w-4xl mx-auto space-y-8 pb-12 text-left">
         
         {/* Header Title */}
-        <div className="border-b border-slate-200/60 pb-6">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Account Settings</h1>
-          <p className="text-slate-500 mt-1">Manage your public profile, customize volunteer skills, and adjust security settings.</p>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-blue-50 dark:from-indigo-950/40 dark:via-slate-900 dark:to-blue-900/20 border border-indigo-100 dark:border-indigo-900/50 shadow-sm relative overflow-hidden text-left transition-colors duration-300">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -mr-16 -mt-16 transition-colors duration-300"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200 dark:bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -ml-16 -mb-16 transition-colors duration-300"></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="px-3 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-indigo-100 dark:border-indigo-800 rounded-full flex items-center gap-1.5 shadow-sm transition-colors duration-300">
+                <User className="w-3.5 h-3.5" /> My Account
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-800 dark:from-slate-100 dark:via-indigo-300 dark:to-slate-200 tracking-tight transition-colors duration-300">Account Settings</h1>
+            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm md:text-base font-medium max-w-2xl transition-colors duration-300">Manage your public profile, customize volunteer skills, and adjust security settings.</p>
+          </div>
         </div>
 
         {/* Outer Grid */}
@@ -249,8 +259,8 @@ const Profile = () => {
               type="button"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer flex-shrink-0 snap-start ${
                 activeTab === "personal"
-                  ? "bg-indigo-50 text-indigo-700 font-bold"
-                  : "text-slate-600 hover:bg-slate-50"
+                  ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <User className="w-4 h-4" />
@@ -263,8 +273,8 @@ const Profile = () => {
                 type="button"
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer flex-shrink-0 snap-start ${
                   activeTab === "skills"
-                    ? "bg-indigo-50 text-indigo-700 font-bold"
-                    : "text-slate-600 hover:bg-slate-50"
+                    ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-bold"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
                 }`}
               >
                 <Tag className="w-4 h-4" />
@@ -277,8 +287,8 @@ const Profile = () => {
               type="button"
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer flex-shrink-0 snap-start ${
                 activeTab === "security"
-                  ? "bg-indigo-50 text-indigo-700 font-bold"
-                  : "text-slate-600 hover:bg-slate-50"
+                  ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <Lock className="w-4 h-4" />
@@ -288,7 +298,7 @@ const Profile = () => {
 
           {/* Form Content Area */}
           <div className="md:col-span-3">
-            <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.02)] overflow-hidden">
+            <form onSubmit={handleSave} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl border border-white dark:border-slate-800/80 shadow-xl shadow-slate-200/40 dark:shadow-none overflow-hidden transition-colors duration-300">
               
               <div className="p-8 space-y-8">
                 
@@ -296,12 +306,12 @@ const Profile = () => {
                 {activeTab === "personal" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-800">Personal Information</h2>
-                      <p className="text-slate-400 text-xs mt-0.5">Your email address is managed by your organization administration.</p>
+                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors duration-300">Personal Information</h2>
+                      <p className="text-slate-400 dark:text-slate-500 text-xs mt-0.5 transition-colors duration-300">Your email address is managed by your organization administration.</p>
                     </div>
 
                     {/* Avatar Upload Container */}
-                    <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-2xl bg-slate-50/50 border border-slate-100">
+                    <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-2xl bg-slate-50/50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 transition-colors duration-300">
                       <div className="relative">
                         {profileImage ? (
                           <img 
@@ -327,16 +337,16 @@ const Profile = () => {
                         {...getRootProps()} 
                         className={`flex-1 border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all ${
                           isDragActive 
-                            ? "border-indigo-500 bg-indigo-50/10" 
-                            : "border-slate-200 hover:border-indigo-500/40"
+                            ? "border-indigo-500 bg-indigo-50/10 dark:bg-indigo-900/10" 
+                            : "border-slate-200 dark:border-slate-700 hover:border-indigo-500/40 dark:hover:border-indigo-500/40"
                         }`}
                       >
                         <input {...getInputProps()} />
-                        <UploadCloud className="w-6 h-6 text-slate-400 mx-auto mb-1.5" />
-                        <p className="text-xs font-semibold text-slate-600">
+                        <UploadCloud className="w-6 h-6 text-slate-400 dark:text-slate-500 mx-auto mb-1.5 transition-colors duration-300" />
+                        <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 transition-colors duration-300">
                           {isDragActive ? "Drop your avatar file here" : "Drag & drop avatar image, or click to browse"}
                         </p>
-                        <p className="text-[10px] text-slate-400 mt-0.5">JPG, PNG, WEBP or GIF up to 5MB</p>
+                        <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 transition-colors duration-300">JPG, PNG, WEBP or GIF up to 5MB</p>
                       </div>
                     </div>
 
@@ -344,56 +354,56 @@ const Profile = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Full Name</label>
+                        <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider transition-colors">Full Name</label>
                         <div className="relative">
-                          <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                           <input
                             type="text"
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                             placeholder="John Doe"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-1.5 opacity-70">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Email Address</label>
+                        <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider transition-colors">Email Address</label>
                         <div className="relative">
-                          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                           <input
                             type="email"
                             disabled
                             value={profile?.email || ""}
-                            className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-slate-500 font-medium text-sm cursor-not-allowed"
+                            className="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm cursor-not-allowed transition-colors"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">Phone Number</label>
+                        <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider transition-colors">Phone Number</label>
                         <div className="relative">
-                          <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                           <input
                             type="tel"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                             placeholder="+1 (555) 000-0000"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">City / Location</label>
+                        <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider transition-colors">City / Location</label>
                         <div className="relative">
-                          <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                           <input
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                             placeholder="San Francisco, CA"
                           />
                         </div>
@@ -407,8 +417,8 @@ const Profile = () => {
                 {activeTab === "skills" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-800">Volunteer Skills & Interests</h2>
-                      <p className="text-slate-400 text-xs mt-0.5">Select the skills you want to contribute. This will customize your recommended events dashboard.</p>
+                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors">Volunteer Skills & Interests</h2>
+                      <p className="text-slate-400 dark:text-slate-500 text-xs mt-0.5 transition-colors">Select the skills you want to contribute. This will customize your recommended events dashboard.</p>
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -421,15 +431,15 @@ const Profile = () => {
                             onClick={() => handleSkillToggle(skill)}
                             className={`p-3.5 border rounded-xl text-xs font-bold transition-all text-center flex items-center justify-between group cursor-pointer ${
                               isSelected
-                                ? "bg-indigo-50 text-indigo-700 border-indigo-200 shadow-sm"
-                                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+                                ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 shadow-sm"
+                                : "bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                             }`}
                           >
                             <span>{skill}</span>
                             <span className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${
                               isSelected 
                                 ? "bg-indigo-600 text-white" 
-                                : "bg-slate-100 group-hover:bg-slate-200 text-transparent"
+                                : "bg-slate-100 dark:bg-slate-700 group-hover:bg-slate-200 dark:group-hover:bg-slate-600 text-transparent"
                             }`}>
                               <Check className="w-2.5 h-2.5" />
                             </span>
@@ -444,45 +454,45 @@ const Profile = () => {
                 {activeTab === "security" && (
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-800">Password & Security</h2>
-                      <p className="text-slate-400 text-xs mt-0.5">Protect your account with high-level Z-security controls.</p>
+                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors">Password & Security</h2>
+                      <p className="text-slate-400 dark:text-slate-500 text-xs mt-0.5 transition-colors">Protect your account with high-level Z-security controls.</p>
                     </div>
 
                     {/* Current Password Validation Required */}
-                    <div className="p-4 bg-amber-50/50 border border-amber-200/60 rounded-2xl space-y-3">
+                    <div className="p-4 bg-amber-50/50 dark:bg-amber-900/20 border border-amber-200/60 dark:border-amber-700/30 rounded-2xl space-y-3 transition-colors">
                       <div className="flex items-center gap-2">
-                        <Lock className="w-4 h-4 text-amber-600" />
-                        <h3 className="text-sm font-bold text-amber-800">Authentication Required</h3>
+                        <Lock className="w-4 h-4 text-amber-600 dark:text-amber-500" />
+                        <h3 className="text-sm font-bold text-amber-800 dark:text-amber-400">Authentication Required</h3>
                       </div>
-                      <p className="text-xs text-amber-600/90 leading-relaxed">
+                      <p className="text-xs text-amber-600/90 dark:text-amber-500/90 leading-relaxed">
                         To update any sensitive security settings (password, MFA, or security questions), you must enter your current password.
                       </p>
                       <div className="space-y-1.5 max-w-md">
-                        <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">Current Password</label>
+                        <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block transition-colors">Current Password</label>
                         <input
                           type="password"
                           value={currentPassword}
                           onChange={(e) => setCurrentPassword(e.target.value)}
-                          className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all"
+                          className="w-full px-4 py-2.5 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all"
                           placeholder="••••••••"
                         />
                       </div>
                     </div>
 
-                    <div className="border-t border-slate-100 my-4"></div>
+                    <div className="border-t border-slate-100 dark:border-slate-800/80 my-4 transition-colors"></div>
 
                     {/* MFA Configuration */}
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 bg-slate-50/60 border border-slate-200/60 rounded-2xl">
+                      <div className="flex items-center justify-between p-4 bg-slate-50/60 dark:bg-slate-800/30 border border-slate-200/60 dark:border-slate-700/50 rounded-2xl transition-colors">
                         <div className="space-y-0.5">
-                          <h3 className="text-sm font-bold text-slate-800">Email Multi-Factor Authentication (MFA)</h3>
-                          <p className="text-xs text-slate-400">Receive a 6-digit OTP code to your email upon login.</p>
+                          <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 transition-colors">Email Multi-Factor Authentication (MFA)</h3>
+                          <p className="text-xs text-slate-400 dark:text-slate-500 transition-colors">Receive a 6-digit OTP code to your email upon login.</p>
                         </div>
                         <button
                           type="button"
                           onClick={() => setMfaEnabled(!mfaEnabled)}
                           className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                            mfaEnabled ? "bg-indigo-600" : "bg-slate-200"
+                            mfaEnabled ? "bg-indigo-600" : "bg-slate-200 dark:bg-slate-600"
                           }`}
                         >
                           <span
@@ -494,35 +504,35 @@ const Profile = () => {
                       </div>
                     </div>
 
-                    <div className="border-t border-slate-100 my-4"></div>
+                    <div className="border-t border-slate-100 dark:border-slate-800/80 my-4 transition-colors"></div>
 
                     {/* Password Change */}
                     <div className="space-y-4">
-                      <h3 className="text-sm font-bold text-slate-800">Update Password</h3>
+                      <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 transition-colors">Update Password</h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">New Password</label>
+                          <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block transition-colors">New Password</label>
                           <div className="relative">
-                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                             <input
                               type="password"
                               value={password}
                               onChange={(e) => setPassword(e.target.value)}
-                              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                               placeholder="••••••••"
                             />
                           </div>
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">Confirm New Password</label>
+                          <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block transition-colors">Confirm New Password</label>
                           <div className="relative">
-                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                             <input
                               type="password"
                               value={confirmPassword}
                               onChange={(e) => setConfirmPassword(e.target.value)}
-                              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                               placeholder="••••••••"
                             />
                           </div>
@@ -530,19 +540,19 @@ const Profile = () => {
                       </div>
                     </div>
 
-                    <div className="border-t border-slate-100 my-4"></div>
+                    <div className="border-t border-slate-100 dark:border-slate-800/80 my-4 transition-colors"></div>
 
                     {/* Security Questions */}
                     <div className="space-y-4 text-left">
                       <div>
-                        <h3 className="text-sm font-bold text-slate-800">Setup Security Questions</h3>
-                        <p className="text-xs text-slate-400">Configure three security questions to verify your identity on administrative operations.</p>
+                        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 transition-colors">Setup Security Questions</h3>
+                        <p className="text-xs text-slate-400 dark:text-slate-500 transition-colors">Configure three security questions to verify your identity on administrative operations.</p>
                       </div>
 
                       <div className="space-y-4">
                         {securityQuestions.map((sq, idx) => (
                           <div key={idx} className="space-y-1.5">
-                            <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">
+                            <label className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block transition-colors">
                               Question {idx + 1}: {sq.question}
                             </label>
                             <input
@@ -553,7 +563,7 @@ const Profile = () => {
                                 newSq[idx].answer = e.target.value;
                                 setSecurityQuestions(newSq);
                               }}
-                              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                              className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                               placeholder="Enter your security answer"
                             />
                           </div>
@@ -567,16 +577,16 @@ const Profile = () => {
               </div>
 
               {/* Bottom Action Footer */}
-              <div className="bg-slate-50 p-6 px-8 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
-                  <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <div className="bg-slate-50/50 dark:bg-slate-900/50 p-6 px-8 border-t border-slate-100/50 dark:border-slate-800/50 flex items-center justify-between transition-colors duration-300">
+                <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider transition-colors duration-300">
+                  <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                   SaaS Protected Profile
                 </div>
                 
                 <button
                   type="submit"
                   disabled={updateMutation.isPending}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow-md shadow-indigo-600/10 cursor-pointer hover:shadow-indigo-600/25 transition-all duration-200 flex items-center gap-2"
+                  className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl shadow-md shadow-indigo-600/20 cursor-pointer hover:shadow-lg transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5"
                 >
                   {updateMutation.isPending ? "Saving..." : "Save Changes"}
                   <Check className="w-4 h-4" />

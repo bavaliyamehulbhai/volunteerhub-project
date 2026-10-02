@@ -12,7 +12,9 @@ const {
   verifyMfa,
   verifySecurityQuestion,
   getSecurityLogs,
-  logoutUser
+  logoutUser,
+  deleteSecurityLog,
+  clearSecurityLogs
 } = require(
   "../controllers/authController"
 );
@@ -65,6 +67,18 @@ router.get(
   "/security-logs",
   protect,
   getSecurityLogs
+);
+
+router.delete(
+  "/security-logs",
+  protect,
+  clearSecurityLogs
+);
+
+router.delete(
+  "/security-logs/:id",
+  protect,
+  deleteSecurityLog
 );
 
 module.exports = router;

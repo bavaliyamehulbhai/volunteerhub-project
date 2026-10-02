@@ -15,6 +15,8 @@ import {
 import SessionGuard from "./src/components/SessionGuard";
 import "./index.css";
 
+import { ThemeProvider } from "./src/context/ThemeContext";
+
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(
@@ -22,12 +24,14 @@ ReactDOM.createRoot(
 ).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <BrowserRouter>
-        <SessionGuard>
-          <AppRoutes />
-        </SessionGuard>
-        <Toaster position="top-right" />
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <SessionGuard>
+            <AppRoutes />
+          </SessionGuard>
+          <Toaster position="top-right" />
+        </BrowserRouter>
+      </ThemeProvider>
     </AuthProvider>
   </QueryClientProvider>
 );

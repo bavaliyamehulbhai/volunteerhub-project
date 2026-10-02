@@ -14,10 +14,10 @@ const StatCard = ({ title, value, icon, color = "blue" }) => {
   };
 
   return (
-    <div className={`bg-white p-6 rounded-2xl border-l-4 ${borderColors[color] || "border-blue-500"} shadow-sm flex items-center justify-between hover:shadow-md transition-all duration-200 text-left`}>
+    <div className={`bg-white dark:bg-slate-900/60 p-6 rounded-2xl border-l-4 ${borderColors[color] || "border-blue-500"} shadow-sm dark:shadow-none flex items-center justify-between hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-indigo-900/10 transition-all duration-200 text-left backdrop-blur-md`}>
       <div>
-        <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">{title}</h3>
-        <p className="text-3xl font-extrabold text-slate-800 mt-1">
+        <h3 className="text-slate-400 dark:text-slate-500 text-sm font-semibold uppercase tracking-wider transition-colors duration-300">{title}</h3>
+        <p className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-1 transition-colors duration-300">
           {value ?? 0}
         </p>
       </div>

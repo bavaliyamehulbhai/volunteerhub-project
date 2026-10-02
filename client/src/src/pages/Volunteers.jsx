@@ -86,35 +86,40 @@ const Volunteers = () => {
       <div className="max-w-7xl mx-auto space-y-8 pb-12 text-left">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200/60 pb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Admin Directory
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-8 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-blue-50 dark:from-indigo-950/40 dark:via-slate-900 dark:to-blue-900/20 border border-indigo-100 dark:border-indigo-900/50 shadow-sm relative overflow-hidden mb-8 transition-colors duration-300">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -mr-16 -mt-16 transition-colors duration-300"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200 dark:bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -ml-16 -mb-16 transition-colors duration-300"></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="px-3 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-400 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-indigo-100 dark:border-indigo-900/50 rounded-full flex items-center gap-1.5 shadow-sm transition-colors">
+                <Sparkles className="w-3.5 h-3.5" /> Admin Directory
               </span>
             </div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 mt-2">Volunteer Directory</h1>
-            <p className="text-slate-500 mt-1">Review active participants, audit signup engagement, and monitor applications.</p>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-800 dark:from-slate-100 dark:via-indigo-300 dark:to-slate-200 tracking-tight transition-colors duration-300">Volunteer Directory</h1>
+            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm md:text-base font-medium max-w-2xl transition-colors">Review active participants, audit signup engagement, and monitor applications.</p>
           </div>
           
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 bg-slate-50 border border-slate-200/60 p-2 px-3 rounded-xl shadow-sm">
-            <Users className="w-4 h-4 text-indigo-600" />
+          <div className="relative z-10 flex items-center gap-3 text-sm font-bold text-indigo-800 dark:text-indigo-300 bg-white/60 dark:bg-slate-800/60 backdrop-blur-md border border-white dark:border-slate-700 p-4 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+            <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-xl transition-colors">
+              <Users className="w-5 h-5" />
+            </div>
             <span>{volunteers.length} Total Volunteers</span>
           </div>
         </div>
 
         {/* Filters Panel */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.01)] grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+        <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-3xl border border-white dark:border-slate-800/80 shadow-xl shadow-slate-200/40 dark:shadow-none grid grid-cols-1 md:grid-cols-4 gap-4 items-center mb-8 transition-colors duration-300">
           
           {/* Search bar */}
           <div className="md:col-span-2 relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 dark:text-slate-500" />
             <input
               type="text"
               placeholder="Search by name or email..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-2.5 bg-slate-55 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all placeholder-slate-400"
+              className="w-full pl-11 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all placeholder-slate-400 dark:placeholder-slate-500"
             />
           </div>
 
@@ -123,7 +128,7 @@ const Volunteers = () => {
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="w-full px-4 py-2.5 bg-slate-55 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all capitalize"
+              className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all capitalize"
             >
               <option value="all">All Cities</option>
               {cities.filter(c => c !== "all").map(city => (
@@ -137,7 +142,7 @@ const Volunteers = () => {
             <select
               value={selectedSkill}
               onChange={(e) => setSelectedSkill(e.target.value)}
-              className="w-full px-4 py-2.5 bg-slate-55 border border-slate-200 rounded-xl text-slate-700 font-medium text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all capitalize"
+              className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-medium text-sm focus:outline-none focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all capitalize"
             >
               <option value="all">All Skills</option>
               {skillsList.filter(s => s !== "all").map(skill => (
@@ -150,13 +155,13 @@ const Volunteers = () => {
 
         {/* Directory Grid */}
         {filteredVolunteers.length === 0 ? (
-          <div className="bg-white p-12 rounded-3xl border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center space-y-4">
-            <div className="p-4 bg-slate-50 text-slate-400 rounded-full">
+          <div className="bg-white dark:bg-slate-900/60 p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm dark:shadow-none text-center flex flex-col items-center justify-center space-y-4 backdrop-blur-md transition-colors duration-300">
+            <div className="p-4 bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 rounded-full transition-colors">
               <Users className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-800">No Volunteers Found</h3>
-              <p className="text-slate-500 text-sm mt-1 max-w-sm mx-auto">
+              <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">No Volunteers Found</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-sm mx-auto transition-colors">
                 No volunteer records match your search criteria. Try modifying your filter options.
               </p>
             </div>
@@ -171,7 +176,7 @@ const Volunteers = () => {
               return (
                 <div 
                   key={vol._id} 
-                  className="bg-white rounded-2xl border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                  className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-3xl border border-white dark:border-slate-800/80 shadow-xl shadow-slate-200/40 dark:shadow-none hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-indigo-100 dark:hover:shadow-indigo-900/20 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
                 >
                   {/* Top Details */}
                   <div className="p-6 space-y-5">
@@ -182,7 +187,7 @@ const Volunteers = () => {
                         <img 
                           src={vol.profileImage} 
                           alt={vol.name} 
-                          className="w-12 h-12 rounded-full object-cover border border-slate-100" 
+                          className="w-12 h-12 rounded-full object-cover border border-slate-100 dark:border-slate-800 transition-colors" 
                         />
                       ) : (
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
@@ -190,10 +195,10 @@ const Volunteers = () => {
                         </div>
                       )}
                       <div className="truncate">
-                        <h3 className="font-bold text-slate-800 text-base leading-tight truncate group-hover:text-indigo-600 transition-colors">
+                        <h3 className="font-bold text-slate-800 dark:text-slate-200 text-base leading-tight truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                           {vol.name}
                         </h3>
-                        <span className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+                        <span className="text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1 mt-0.5 transition-colors">
                           <MapPin className="w-3.5 h-3.5" />
                           {vol.city || "Not Provided"}
                         </span>
@@ -201,35 +206,35 @@ const Volunteers = () => {
                     </div>
 
                     {/* Quick Contacts */}
-                    <div className="space-y-1.5 text-xs text-slate-500 font-medium">
+                    <div className="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium transition-colors">
                       <div className="flex items-center gap-2">
-                        <Mail className="w-3.5 h-3.5 text-slate-400" />
+                        <Mail className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 transition-colors" />
                         <span className="truncate">{vol.email}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Phone className="w-3.5 h-3.5 text-slate-400" />
+                        <Phone className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 transition-colors" />
                         <span>{vol.phone || "No phone listed"}</span>
                       </div>
                     </div>
 
                     {/* Skill Badges */}
                     <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Skills</span>
+                      <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block transition-colors">Skills</span>
                       <div className="flex flex-wrap gap-1.5">
                         {!vol.skills || vol.skills.length === 0 ? (
-                          <span className="text-xs text-slate-400 italic">No skills listed</span>
+                          <span className="text-xs text-slate-400 dark:text-slate-500 italic transition-colors">No skills listed</span>
                         ) : (
                           vol.skills.slice(0, 3).map((skill) => (
                             <span 
                               key={skill} 
-                              className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-50 text-slate-600 border border-slate-100"
+                              className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-slate-700 transition-colors"
                             >
                               {skill}
                             </span>
                           ))
                         )}
                         {vol.skills && vol.skills.length > 3 && (
-                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800/50 transition-colors">
                             +{vol.skills.length - 3} more
                           </span>
                         )}
@@ -239,28 +244,28 @@ const Volunteers = () => {
                   </div>
 
                   {/* Summary Stats Footer & Button */}
-                  <div className="bg-slate-50/70 border-t border-slate-100 p-4 flex items-center justify-between">
+                  <div className="bg-slate-50/70 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800/80 p-4 flex items-center justify-between transition-colors">
                     
                     {/* Compact stats */}
                     <div className="flex gap-4">
                       <div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase block tracking-wider leading-none">Apps</span>
-                        <span className="text-sm font-extrabold text-slate-700 mt-1 block">{vol.totalApplications}</span>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase block tracking-wider leading-none transition-colors">Apps</span>
+                        <span className="text-sm font-extrabold text-slate-700 dark:text-slate-300 mt-1 block transition-colors">{vol.totalApplications}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase block tracking-wider leading-none">Appr</span>
-                        <span className="text-sm font-extrabold text-emerald-600 mt-1 block">{vol.approvedApplications}</span>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase block tracking-wider leading-none transition-colors">Appr</span>
+                        <span className="text-sm font-extrabold text-emerald-600 dark:text-emerald-400 mt-1 block transition-colors">{vol.approvedApplications}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase block tracking-wider leading-none">Rate</span>
-                        <span className="text-sm font-extrabold text-indigo-600 mt-1 block">{approvalRate}%</span>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase block tracking-wider leading-none transition-colors">Rate</span>
+                        <span className="text-sm font-extrabold text-indigo-600 dark:text-indigo-400 mt-1 block transition-colors">{approvalRate}%</span>
                       </div>
                     </div>
 
                     {/* Detail trigger */}
                     <button
                       onClick={() => setActiveVolunteer(vol)}
-                      className="px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-sm hover:shadow transition-all duration-200 flex items-center gap-1 cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600/90 dark:hover:bg-indigo-500 rounded-lg shadow-sm hover:shadow transition-all duration-200 flex items-center gap-1 cursor-pointer"
                     >
                       Audit
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -275,17 +280,17 @@ const Volunteers = () => {
 
         {/* Detail Modal Overlay */}
         {activeVolunteer && (
-          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-0 bg-slate-900/40 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 z-50 transition-all duration-300">
+            <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl border border-white dark:border-slate-800 shadow-2xl shadow-indigo-500/20 dark:shadow-indigo-900/40 max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
               
               {/* Modal Header */}
-              <div className="p-6 border-b border-slate-100 flex items-center justify-between text-left">
+              <div className="p-6 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-left transition-colors">
                 <div className="flex items-center gap-3">
                   {activeVolunteer.profileImage ? (
                     <img 
                       src={activeVolunteer.profileImage} 
                       alt={activeVolunteer.name} 
-                      className="w-11 h-11 rounded-full object-cover border border-slate-100 shadow-sm" 
+                      className="w-11 h-11 rounded-full object-cover border border-slate-100 dark:border-slate-800 shadow-sm transition-colors" 
                     />
                   ) : (
                     <div className="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
@@ -293,14 +298,14 @@ const Volunteers = () => {
                     </div>
                   )}
                   <div>
-                    <h2 className="text-lg font-bold text-slate-800 leading-tight">{activeVolunteer.name}</h2>
-                    <span className="text-xs text-slate-400 mt-0.5 block capitalize">{activeVolunteer.city || "Location not provided"}</span>
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 leading-tight transition-colors">{activeVolunteer.name}</h2>
+                    <span className="text-xs text-slate-400 dark:text-slate-500 mt-0.5 block capitalize transition-colors">{activeVolunteer.city || "Location not provided"}</span>
                   </div>
                 </div>
                 
                 <button
                   onClick={() => setActiveVolunteer(null)}
-                  className="p-1.5 hover:bg-slate-100 text-slate-400 hover:text-slate-600 rounded-xl transition-all cursor-pointer"
+                  className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 rounded-xl transition-all cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -311,26 +316,26 @@ const Volunteers = () => {
                 
                 {/* Volunteer Summary Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-100/50">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Email Address</span>
-                    <span className="text-xs font-semibold text-slate-700 mt-1 block truncate">{activeVolunteer.email}</span>
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100/50 dark:border-slate-700/50 transition-colors">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block transition-colors">Email Address</span>
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-1 block truncate transition-colors">{activeVolunteer.email}</span>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-100/50">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Phone Number</span>
-                    <span className="text-xs font-semibold text-slate-700 mt-1 block">{activeVolunteer.phone || "None listed"}</span>
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100/50 dark:border-slate-700/50 transition-colors">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block transition-colors">Phone Number</span>
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-1 block transition-colors">{activeVolunteer.phone || "None listed"}</span>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-100/50">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Success Rate</span>
-                    <span className="text-sm font-extrabold text-indigo-600 mt-1 block flex items-center gap-1">
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100/50 dark:border-slate-700/50 transition-colors">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block transition-colors">Success Rate</span>
+                    <span className="text-sm font-extrabold text-indigo-600 dark:text-indigo-400 mt-1 block flex items-center gap-1 transition-colors">
                       <TrendingUp className="w-4 h-4" />
                       {activeVolunteer.totalApplications 
                         ? Math.round((activeVolunteer.approvedApplications / activeVolunteer.totalApplications) * 100)
                         : 0}%
                     </span>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-100/50">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Joined Date</span>
-                    <span className="text-xs font-semibold text-slate-700 mt-1 block">
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100/50 dark:border-slate-700/50 transition-colors">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block transition-colors">Joined Date</span>
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 mt-1 block transition-colors">
                       {new Date(activeVolunteer.createdAt).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
                     </span>
                   </div>
@@ -338,18 +343,18 @@ const Volunteers = () => {
 
                 {/* Skills list */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1">
-                    <Tag className="w-3.5 h-3.5 text-slate-400" />
+                  <h4 className="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1 transition-colors">
+                    <Tag className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                     Volunteer Skillsets
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {!activeVolunteer.skills || activeVolunteer.skills.length === 0 ? (
-                      <span className="text-xs text-slate-400 italic">No skills registered.</span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 italic transition-colors">No skills registered.</span>
                     ) : (
                       activeVolunteer.skills.map((skill) => (
                         <span 
                           key={skill} 
-                          className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50/50 text-indigo-700 border border-indigo-100/50"
+                          className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50/50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-800/50 transition-colors"
                         >
                           {skill}
                         </span>
@@ -360,33 +365,33 @@ const Volunteers = () => {
 
                 {/* Applications history table */}
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
-                    <BookOpen className="w-4 h-4 text-slate-400" />
+                  <h4 className="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+                    <BookOpen className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                     Application Timeline ({activeVolunteerHistory.length})
                   </h4>
                   
-                  <div className="border border-slate-100 rounded-xl overflow-x-auto">
+                  <div className="border border-slate-100 dark:border-slate-800/80 rounded-xl overflow-x-auto transition-colors">
                     <table className="w-full text-left border-collapse text-sm">
                       <thead>
-                        <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800/80 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider transition-colors">
                           <th className="p-3">Applied Program / Event</th>
                           <th className="p-3">Applied At</th>
                           <th className="p-3 text-right">Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100">
+                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 transition-colors">
                         {activeVolunteerHistory.length === 0 ? (
                           <tr>
-                            <td colSpan="3" className="p-6 text-center text-slate-400 italic">
+                            <td colSpan="3" className="p-6 text-center text-slate-400 dark:text-slate-500 italic transition-colors">
                               This volunteer hasn't submitted any applications.
                             </td>
                           </tr>
                         ) : (
                           activeVolunteerHistory.map((app) => (
-                            <tr key={app._id} className="hover:bg-slate-50/40 transition-colors">
+                            <tr key={app._id} className="hover:bg-slate-50/40 dark:hover:bg-slate-800/40 transition-colors">
                               <td className="p-3">
                                 <div className="flex items-center gap-1.5">
-                                  <span className="font-semibold text-slate-700 max-w-[200px] truncate block">
+                                  <span className="font-semibold text-slate-700 dark:text-slate-300 max-w-[200px] truncate block transition-colors">
                                     {app.eventId?.title || "Deleted Event"}
                                   </span>
                                   {app.eventId?._id && (
@@ -394,15 +399,15 @@ const Volunteers = () => {
                                       href={`/events/${app.eventId._id}`} 
                                       target="_blank" 
                                       rel="noreferrer" 
-                                      className="text-slate-400 hover:text-indigo-600"
+                                      className="text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                                     >
                                       <ExternalLink className="w-3.5 h-3.5" />
                                     </a>
                                   )}
                                 </div>
-                                <span className="text-[10px] text-slate-400 block mt-0.5">{app.eventId?.location}</span>
+                                <span className="text-[10px] text-slate-400 dark:text-slate-500 block mt-0.5 transition-colors">{app.eventId?.location}</span>
                               </td>
-                              <td className="p-3 text-xs text-slate-400">
+                              <td className="p-3 text-xs text-slate-400 dark:text-slate-500 transition-colors">
                                 {new Date(app.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                               </td>
                               <td className="p-3 text-right">
@@ -419,10 +424,10 @@ const Volunteers = () => {
               </div>
 
               {/* Modal Footer */}
-              <div className="p-6 bg-slate-50/70 border-t border-slate-100 text-right">
+              <div className="p-6 bg-slate-50/70 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800/80 text-right transition-colors">
                 <button
                   onClick={() => setActiveVolunteer(null)}
-                  className="px-5 py-2 text-sm font-semibold text-slate-600 bg-white border border-slate-200 hover:bg-slate-50 rounded-xl shadow-sm transition-all cursor-pointer"
+                  className="px-5 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl shadow-sm transition-all cursor-pointer"
                 >
                   Close Audit
                 </button>

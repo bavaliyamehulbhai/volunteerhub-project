@@ -5,13 +5,18 @@ const EventCard = ({ event }) => {
   return (
     <div className="
       bg-white
+      dark:bg-slate-900/60
+      backdrop-blur-md
       rounded-2xl
       shadow-sm
+      dark:shadow-none
       border
       border-slate-100
+      dark:border-slate-800
       overflow-hidden
       hover:-translate-y-1
       hover:shadow-lg
+      dark:hover:shadow-indigo-900/20
       transition-all
       duration-300
     ">
@@ -39,7 +44,9 @@ const EventCard = ({ event }) => {
 
           <span className="
             bg-green-100
+            dark:bg-emerald-900/30
             text-green-700
+            dark:text-emerald-400
             text-sm
             px-3
             py-1
@@ -48,7 +55,7 @@ const EventCard = ({ event }) => {
             {event.category}
           </span>
 
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-slate-400 transition-colors">
             {new Date(
               event.eventDate
             ).toLocaleDateString()}
@@ -72,15 +79,20 @@ const EventCard = ({ event }) => {
           font-bold
           mt-4
           text-left
+          text-slate-800
+          dark:text-slate-100
+          transition-colors
         ">
           {event.title}
         </h2>
 
         <p className="
           text-gray-600
+          dark:text-slate-400
           mt-2
           line-clamp-2
           text-left
+          transition-colors
         ">
           {event.description}
         </p>
@@ -89,17 +101,19 @@ const EventCard = ({ event }) => {
           mt-3
           text-sm
           text-gray-500
+          dark:text-slate-500
           text-left
+          transition-colors
         ">
           📍 {event.location}
         </p>
 
         {event.matchScore !== undefined && event.matchedSkills && event.matchedSkills.length > 0 && (
           <div className="mt-3 text-left">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">Matched Skills</span>
+            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block transition-colors">Matched Skills</span>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {event.matchedSkills.map(skill => (
-                <span key={skill} className="bg-emerald-50 text-emerald-700 border border-emerald-100/50 text-xs px-2.5 py-0.5 rounded-full font-semibold">
+                <span key={skill} className="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-800/30 text-xs px-2.5 py-0.5 rounded-full font-semibold transition-colors">
                   {skill}
                 </span>
               ))}
@@ -116,7 +130,9 @@ const EventCard = ({ event }) => {
 
           <span className="
             text-blue-600
+            dark:text-indigo-400
             font-medium
+            transition-colors
           ">
             {event.registeredCount}/
             {event.requiredVolunteers}
@@ -127,6 +143,8 @@ const EventCard = ({ event }) => {
             className="
               bg-blue-600
               hover:bg-blue-700
+              dark:bg-indigo-600
+              dark:hover:bg-indigo-500
               text-white
               px-4
               py-2

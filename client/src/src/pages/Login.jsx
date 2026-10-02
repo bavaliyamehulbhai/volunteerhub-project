@@ -24,6 +24,7 @@ const Login = () => {
     register,
     handleSubmit,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(loginSchema),
@@ -88,6 +89,11 @@ const Login = () => {
     mutation.mutate(data);
   };
 
+  const handleDemoLogin = () => {
+    setValue("email", "demo123@gmail.com");
+    setValue("password", "Demo123");
+  };
+
   const handleMfaSubmit = (e) => {
     e.preventDefault();
     if (otp.length !== 6) {
@@ -98,26 +104,26 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4">
-      <div className="w-full max-w-md bg-slate-900/50 border border-slate-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center items-center p-4 transition-colors duration-300">
+      <div className="w-full max-w-md bg-white/80 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl dark:shadow-indigo-900/20 transition-colors duration-300">
         
         {!mfaToken ? (
           <>
-            <h2 className="text-3xl font-extrabold text-white text-center tracking-tight mb-2">
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white text-center tracking-tight mb-2 transition-colors duration-300">
               Welcome Back
             </h2>
-            <p className="text-slate-400 text-center text-sm mb-8">
+            <p className="text-slate-500 dark:text-slate-400 text-center text-sm mb-8 transition-colors duration-300">
               Sign in to your volunteer account
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+              <div className="space-y-1 text-left">
+                <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
                   Email Address
                 </label>
                 <input
                   placeholder="name@example.com"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   {...register("email")}
                 />
                 {errors.email && (
@@ -125,14 +131,14 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
+              <div className="space-y-1 text-left">
+                <label className="text-xs font-semibold text-slate-500 dark:text-slate-300 uppercase tracking-wider block transition-colors duration-300">
                   Password
                 </label>
                 <input
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   {...register("password")}
                 />
                 {errors.password && (
@@ -147,13 +153,21 @@ const Login = () => {
               >
                 {mutation.isPending ? "Signing in..." : "Sign In"}
               </button>
+
+              <button
+                type="button"
+                onClick={handleDemoLogin}
+                className="w-full mt-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold py-3 px-4 rounded-xl transition-all duration-200 active:scale-[0.98]"
+              >
+                Auto-fill Demo Credentials
+              </button>
             </form>
 
-            <p className="text-slate-400 text-sm text-center mt-8">
+            <p className="text-slate-500 dark:text-slate-400 text-sm text-center mt-8 transition-colors duration-300">
               Don't have an account?{" "}
               <span
                 onClick={() => navigate("/register")}
-                className="text-blue-400 hover:text-blue-300 font-semibold cursor-pointer transition-colors duration-200"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold cursor-pointer transition-colors duration-200"
               >
                 Sign up
               </span>
@@ -162,35 +176,35 @@ const Login = () => {
         ) : (
           <>
             <div className="flex justify-center mb-6">
-              <span className="p-3 bg-blue-500/10 rounded-2xl text-blue-400 border border-blue-500/20">
+              <span className="p-3 bg-blue-100 dark:bg-blue-500/10 rounded-2xl text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20 transition-colors duration-300">
                 <ShieldCheck className="w-8 h-8" />
               </span>
             </div>
             
-            <h2 className="text-2xl font-extrabold text-white text-center tracking-tight mb-2">
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white text-center tracking-tight mb-2 transition-colors duration-300">
               Security Verification
             </h2>
-            <p className="text-slate-400 text-center text-sm mb-6">
+            <p className="text-slate-500 dark:text-slate-400 text-center text-sm mb-6 transition-colors duration-300">
               Please enter the 6-digit code sent to your registered email address.
             </p>
 
             <form onSubmit={handleMfaSubmit} className="space-y-6">
               <div className="space-y-2">
                 <div className="relative">
-                  <Key className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                  <Key className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 dark:text-slate-500 transition-colors duration-300" />
                   <input
                     type="text"
                     maxLength={6}
                     placeholder="000000"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-12 pr-4 py-3.5 text-center text-xl font-bold tracking-[8px] text-white placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl pl-12 pr-4 py-3.5 text-center text-xl font-bold tracking-[8px] text-slate-900 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   />
                 </div>
                 
                 <div className="flex justify-between items-center text-xs px-1">
-                  <span className="text-slate-400 font-medium">Expires in:</span>
-                  <span className={`font-bold ${countdown === 0 ? "text-red-500" : "text-blue-400"}`}>
+                  <span className="text-slate-500 dark:text-slate-400 font-medium transition-colors duration-300">Expires in:</span>
+                  <span className={`font-bold transition-colors duration-300 ${countdown === 0 ? "text-red-500" : "text-blue-600 dark:text-blue-400"}`}>
                     {countdown === 0 ? "Code Expired" : formatTime(countdown)}
                   </span>
                 </div>

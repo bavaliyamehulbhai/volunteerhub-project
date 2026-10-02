@@ -29,7 +29,7 @@ const DashboardLayout = ({ children }) => {
       ];
 
   return (
-    <div className="flex h-screen w-screen bg-slate-100 overflow-hidden">
+    <div className="flex h-screen w-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden transition-colors duration-300">
       
       {/* Desktop Sidebar Dock */}
       <Sidebar className="hidden md:flex" />
@@ -62,7 +62,7 @@ const DashboardLayout = ({ children }) => {
         </main>
 
         {/* Mobile Bottom Navigation Bar */}
-        <div className="md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-md pb-safe flex items-center justify-around py-2 px-3 relative z-30 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+        <div className="md:hidden border-t border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md pb-safe flex items-center justify-around py-2 px-3 relative z-30 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] dark:shadow-none transition-colors duration-300">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.path);
@@ -72,8 +72,8 @@ const DashboardLayout = ({ children }) => {
                 to={item.path}
                 className={`flex flex-col items-center gap-1.5 py-1 px-3.5 rounded-xl transition-all duration-200 cursor-pointer ${
                   active 
-                    ? "text-indigo-600 font-semibold" 
-                    : "text-slate-400 hover:text-slate-600"
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold" 
+                    : "text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                 }`}
               >
                 <Icon size={20} className={`transition-transform duration-200 ${active ? "scale-110" : ""}`} />
